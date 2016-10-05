@@ -57,8 +57,8 @@ function login( $url, $post ) {
 }
 
 function crawling( $config ){
-    $output_folder = '..\feed';
-    $output_file = dirname( __FILE__ ).'\\'.$output_folder.'\\'.$config['file_title'].'.xml' ;
+    $output_folder = '../feed';
+    $output_file = dirname( __FILE__ ).'/'.$output_folder.'/'.$config['file_title'].'.xml' ;
     if ( is_file( $output_file ) ){
         $revise_time = time() - filemtime( $output_file ) ; // 以秒为单位
         if ( $revise_time < $config['cache_time'] ){
@@ -66,11 +66,11 @@ function crawling( $config ){
             @readfile( $output_file );
             exit();
         }
-    }elseif( !is_dir(dirname( __FILE__ ).'\\'.$output_folder) ){
-        mkdir( dirname( __FILE__ ).'\\'.$output_folder );
+    }elseif( !is_dir(dirname( __FILE__ ).'/'.$output_folder) ){
+        mkdir( dirname( __FILE__ ).'/'.$output_folder );
     }
     
-	$GLOBALS['cookie_file'] = dirname( __FILE__ ).'\\..\\cookie\\'.$config['file_title'].'.txt';
+	$GLOBALS['cookie_file'] = dirname( __FILE__ ).'/../cookie/'.$config['file_title'].'.txt';
     if( $config['request_header'] ){
 	    $GLOBALS['default_header'] = array_merge( $config['request_header'] , $GLOBALS['default_header'] );
     }
